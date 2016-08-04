@@ -140,18 +140,66 @@ Array.prototype.toggle = function(row, column){
 //
 
 
-var checkQueens = function(n){
+// var checkQueens = function(n){
+// console.time('t');
+// var output = 0; 
+// var board = []
+// for (var i = 0; i < n; i++) {
+//       board.push(Array(n).fill(0));
+// }
+// //inner function 
+// var inner = function(row){
+
+// 	// if reach row = n 
+// 	if (row == n){
+// 		output++; 
+// 		//console.table(board)
+// 		return 
+// 	}
+
+// 	for (var i = 0; i < n; i ++){
+// 	board.toggle(row, i)
+// 	// start with the first item index
+// 	if (board.checkColumn() && board.checkDiagonal()){
+// 		inner(row+1)
+// 	}
+// 	board.toggle(row, i)
+// 	}
+// }
+
+// // invoke with first row 
+// inner(0);
+// console.timeEnd('t'); 
+// return output; 
+// }
+// console.log('check n = 8 for nQueens, number of solution ', checkQueens(8))
+// console.log('check n = 9 for nQueens, number of solution ', checkQueens(9))
+// console.log('check n = 10 for nQueens, number of solution ', checkQueens(10))
+
+
+// Array.prototype.toggle = function(row, column){
+// 	if (this[row][column] === 0){
+// 		this[row][column] = 1; 
+// 	}else{
+// 		this[row][column] = 0;
+// 	}
+// 	return this
+// }
+
+var total = 0; 
+
+var disCheckQueens = function(board, n, level){
 console.time('t');
 var output = 0; 
-var board = []
-for (var i = 0; i < n; i++) {
-      board.push(Array(n).fill(0));
-}
+// var board = []
+// for (var i = 0; i < n; i++) {
+//       board.push(Array(n).fill(0));
+// }
 //inner function 
 var inner = function(row){
 
 	// if reach row = n 
-	if (row == n){
+	if (row === n){
 		output++; 
 		//console.table(board)
 		return 
@@ -168,13 +216,42 @@ var inner = function(row){
 }
 
 // invoke with first row 
-inner(0);
+inner(level);
 console.timeEnd('t'); 
 return output; 
 }
-console.log('check n = 8 for nQueens, number of solution ', checkQueens(8))
-console.log('check n = 9 for nQueens, number of solution ', checkQueens(9))
-console.log('check n = 10 for nQueens, number of solution ', checkQueens(10))
+
+var level = 1; 
+var inputArr1 = [
+[1,0,0,0],
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0]] 
+
+var inputArr2 = [
+[0,1,0,0],
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0]] 
+
+var inputArr3 = [
+[0,0,1,0],
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0]] 
+
+var inputArr4 = [
+[0,0,0,1],
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0]] 
+
+
+console.log('n = 4, number of output = ', disCheckQueens(inputArr1, 4, level)); 
+console.log('n = 4, number of output = ', disCheckQueens(inputArr2, 4, level)); 
+console.log('n = 4, number of output = ', disCheckQueens(inputArr3, 4, level)); 
+console.log('n = 4, number of output = ', disCheckQueens(inputArr4, 4, level)); 
+
 
 
 </script>
